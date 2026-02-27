@@ -1,8 +1,20 @@
-# Challenge B: Stranger Things Progression
+# CHALLENGE D: Spongebob theme
+
 use_bpm 136
 use_synth :piano
 
-define :measure346 do
+define :measure_28 do
+  play:E4
+  sleep 1
+  play:E5
+  play:Gs4
+  sleep 2
+  play:E5
+  play:Gs4
+  sleep 1
+end
+
+define :measure_346 do
   play :r
   sleep 1
   play:E5
@@ -16,7 +28,7 @@ define :measure346 do
   sleep 1
 end
 
-define :measure57 do
+define :measure_57 do
   play:B4
   sleep 0.75
   play:As4
@@ -33,16 +45,14 @@ define :measure57 do
   sleep 1
 end
 
-define :measure28 do
-  play:E4
-  sleep 1
-  play:E5
-  play:Gs4
-  sleep 2
-  play:E5
-  play:Gs4
-  sleep 1
+live_loop :squid_ward do
+  16.times do
+    sample :bd_zome
+    sleep 2
+  end
+  stop
 end
+
 
 live_loop:background_notes do
   play:E3, amp: 0.25
@@ -100,40 +110,25 @@ play:Gs4
 sleep 1
 
 # Measure 2
-with_fx :wobble do
-  measure28
-end
-
+measure_28
 
 # Measure 3
-measure346
+measure_346
 
-with_fx :wobble do
-  measure346
-end
 # Measure 4
-with_fx :wobble do
-  measure346
-end
+measure_346
 
 # Measure 5
-with_fx :wobble do
-  measure57
-end
-
+measure_57
 
 # Measure 6
-with_fx :wobble do
-  measure346
-end
+measure_346
 
 # Measure 7
-with_fx :wobble do
-  measure57
-end
-
+measure_57
 
 # Measure 8
-with_fx :wobble do
-  measure28
-end
+measure_28
+
+
+sample  :bd_boom
