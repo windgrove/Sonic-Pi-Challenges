@@ -235,6 +235,8 @@ play :as3
 sleep 0.5
 play :d4, sustain: 3
 sleep 3
+play :d4, sustain: 3
+sleep 3
 
 
 
