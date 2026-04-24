@@ -1,10 +1,11 @@
 use_bpm 155
 use_synth :piano
-ending_notes = [:ds3, :as3, :as3, :as3, :f3, :as3, :as3, :as3, :as3, :as3, :a3, :d3, :f3, :g3, :g3, :d3, :f3, :g3, :as3, :g3]
-ending_sleeps = [0.5, 1, 1, 1, 1, 1, 2, 1.5, 1.5, 0.5, 1.5, 1, 0.5, 1, 1.5, 1, 0.5, 1.5, 0.5,]
+
 line_2="C:/Users/windgrove_daniel/Downloads/I_Choose_You.wav"
 line_1="C:/Users/windgrove_daniel/Downloads/Audacity/WINNER.wav"
-
+ending_notes = [:ds3, :as3, :as3, :as3, :f3, :as3, :as3, :as3, :as3, :as3, :a3, :d3, :f3, :g3, :g3, :d3, :f3, :g3, :as3, :g3]
+ending_sleeps = [0.5, 1, 1, 1, 1, 1, 2, 1.5, 1.5, 0.5, 1.5, 1, 0.5, 1, 1.5, 1, 0.5, 1.5, 0.5,]
+i=0
 v= 0.25
 #first time plays quiet
 
@@ -333,9 +334,12 @@ live_loop :notes do
   
   stop
 end
-
+20.times do
+  play (ending_notes[i])
+  play (ending_sleeps[i])
+  i=i+20
+end
 sleep 15
-
 test = 0
 live_loop :drums do
   100.times do
