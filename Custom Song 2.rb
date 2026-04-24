@@ -1,12 +1,17 @@
 use_bpm 155
 use_synth :piano
 
-line_2="C:/Users/windgrove_daniel/Downloads/I_Choose_You.wav"
+line_3=
+  line_2="C:/Users/windgrove_daniel/Downloads/I_Choose_You.wav"
 line_1="C:/Users/windgrove_daniel/Downloads/Audacity/WINNER.wav"
-ending_notes = [:ds3, :as3, :as3, :as3, :f3, :as3, :as3, :as3, :as3, :as3, :a3, :d3, :f3, :g3, :g3, :d3, :f3, :g3, :as3, :g3]
-ending_sleeps = [0.5, 1, 1, 1, 1, 1, 2, 1.5, 1.5, 0.5, 1.5, 1, 0.5, 1, 1.5, 1, 0.5, 1.5, 0.5,]
-i=0
+
 v= 0.25
+
+define :my_note do |x, y, z|
+  play x, sustain: z
+  sleep y
+end
+
 #first time plays quiet
 
 sample line_1
@@ -292,57 +297,33 @@ live_loop :notes do
   sleep 1
   play :f4, sustain: 3
   sleep 2
-  play :ds3
-  sleep 0.5
-  play :as3, sustain: 1.5
-  sleep 1
-  play :as3, sustain: 1.5
-  sleep 1
-  play :as3, sustain: 1.5
-  sleep 1
-  play :f3, sustain: 1.5
-  sleep 1
-  play :as3, sustain: 1.5
-  sleep 1
-  play :as3, sustain: 3
-  sleep 2
-  play :as3, sustain: 2
-  sleep 1.5
-  play :as3, sustain: 2
-  sleep 1.5
-  play :as3, sustain: 0.5
-  sleep 0.5
-  play :a3, sustain: 2
-  sleep 1.5
-  play :d3, sustain: 1.5
-  sleep 1
-  play :f3
-  sleep 0.5
-  play :g3, sustain: 1.5
-  sleep 1
-  play :g3, sustain: 2
-  sleep 1.5
-  play :d3, sustain: 1.5
-  sleep 1
-  play :f3
-  sleep 0.5
-  play :g3, sustain: 2
-  sleep 1.5
-  play :as3
-  sleep 0.5
-  play :g3, sustain: 15
+  my_note :ds3, 0.5, 0
+  my_note :as3, 1, 1.5
+  my_note :as3, 1, 1.5
+  my_note :as3, 1, 1.5
+  my_note :f3, 1, 1.5
+  my_note :as3, 1, 1.5
+  my_note :as3, 2, 3
+  my_note :as3, 1.5, 2
+  my_note :as3, 1.5, 2
+  my_note :as3, 0.5, 0.5
+  my_note :a3, 1.5, 2
+  my_note :d3, 1, 1.5
+  my_note :f3, 0.5, 0
+  my_note :g3, 1, 1.5
+  my_note :g3, 1.5, 2
+  my_note :d3, 1, 1.5
+  my_note :f3, 0.5, 0
+  my_note :g3, 1, 1.5
+  my_note :as3, 0.5, 0
+  my_note :g3, 0, 15
   
   stop
-end
-20.times do
-  play (ending_notes[i])
-  play (ending_sleeps[i])
-  i=i+20
 end
 sleep 15
 test = 0
 live_loop :drums do
-  100.times do
+  110.times do
     print test
     test = test + 1
     sample :drum_cymbal_closed
@@ -359,4 +340,3 @@ live_loop :soundeffects do
   sleep 12
   stop
 end
-
