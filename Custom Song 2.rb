@@ -1,20 +1,28 @@
 use_bpm 155
 use_synth :piano
 
-line_3=
-  line_2="C:/Users/windgrove_daniel/Downloads/I_Choose_You.wav"
-line_1="C:/Users/windgrove_daniel/Downloads/Audacity/WINNER.wav"
+line_1=["C:/Users/windgrove_daniel/Downloads/Audacity/WINNER.wav"]
+line_2=["C:/Users/windgrove_daniel/Downloads/Audacity/I_Choose_You.wav"]
+line_3=["C:/Users/windgrove_daniel/Downloads/Audacity/Ash Wins.wav"]
 
+index = 0
 v= 0.25
 
 define :my_note do |x, y, z|
   play x, sustain: z
   sleep y
 end
-
 #first time plays quiet
 
-sample line_1
+live_loop :Theme do
+  sample (line_1[index])
+  sleep 80
+  sample (line_2[index])
+  sleep 105
+  sample (line_3[index])
+  index = index + 1
+  
+end
 
 sleep 20.5
 
@@ -68,7 +76,6 @@ live_loop :notes do
   sleep 0.5
   play :f2, sustain: 1.5
   sleep 2
-  
   # "Like no one ever was..."
   play :f3
   sleep 0.5
@@ -332,11 +339,3 @@ live_loop :drums do
   stop
 end
 
-sleep 11
-
-
-live_loop :soundeffects do
-  sample line_2, amp: 1
-  sleep 12
-  stop
-end
